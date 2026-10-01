@@ -2,189 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0B0D10">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <title>Avora Digital | Shopify, Web Development & Digital Marketing Agency</title>
+  <!-- ================= CORE SEO ================= -->
+  <!-- Title: ~61 chars, primary keyword + location first, brand last -->
+  <title>Shopify &amp; Web Development Agency in Pakistan | Avora Digital</title>
 
-  <meta
-    name="description"
-    content="Avora Digital is a Pakistan-based digital agency providing Shopify development, custom website development, Meta Ads, Facebook and Instagram marketing, bottle label design and printing, and custom tissue packaging."
-  >
-
-  <meta
-    name="keywords"
-    content="Shopify development, Shopify development agency Pakistan, custom Shopify store development, web development, custom website development, ecommerce website development, digital marketing, Meta Ads, Facebook marketing, Instagram marketing, bottle label design, bottle label printing, tissue packaging, branding agency Pakistan"
-  >
+  <!-- Description: ~155 chars, plain sentence + call to action (no keyword stuffing) -->
+  <meta name="description" content="Pakistan-based agency for Shopify, websites and Meta Ads. Logo and label design worldwide; printing and delivery of branded bottles and tissue paper in Pakistan.">
 
   <meta name="author" content="Avora Digital">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-
   <link rel="canonical" href="https://avoradigital.online/">
 
-  <!-- Open Graph -->
+  <!-- ================= OPEN GRAPH / SOCIAL ================= -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Avora Digital | Build. Market. Brand.">
-  <meta
-    property="og:description"
-    content="Shopify development, custom websites, Meta Ads, social marketing and physical brand packaging from one complete digital partner."
-  >
-  <meta property="og:url" content="https://avoradigital.online/">
   <meta property="og:site_name" content="Avora Digital">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:url" content="https://avoradigital.online/">
+  <meta property="og:title" content="Avora Digital | Build. Market. Scale. Brand.">
+  <meta property="og:description" content="Shopify development, custom websites and Meta Ads, plus logo and label design worldwide and printing and delivery of branded bottles and tissue paper in Pakistan.">
   <meta property="og:image" content="https://avoradigital.online/assets/og-home.jpg">
+  <!-- Sirf tab rakhein jab og-home.jpg waqai 1200x630 ho -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Avora Digital: Shopify development, web development and digital marketing agency">
 
-  <!-- Twitter -->
+  <!-- X/Twitter og: tags se title, description, image khud utha leta hai -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Avora Digital | Build. Market. Brand.">
-  <meta
-    name="twitter:description"
-    content="A complete brand-building partner for websites, marketing and packaging."
-  >
-  <meta name="twitter:image" content="https://avoradigital.online/assets/og-home.jpg">
 
-  <!-- Fonts -->
+  <!-- ================= FONTS ================= -->
+  <!-- TODO: css/style.css check karein aur jo weights use nahi ho rahe woh hata dein (speed = ranking signal) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <!-- Favicon -->
-<link rel="icon" href="assets/favicon/avoradigital-favicon-16-16.png" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/avoradigital-favicon-32-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/avoradigital-favicon-16-16.png">
-
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/avoradigital-favicon-16-16.png">
+  <!-- ================= FAVICONS ================= -->
+  <!-- Google Search ko favicon 48px ka multiple chahiye (48, 96, 144...). Ye files banani hongi. -->
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon/avoradigital-favicon-48-48.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/avoradigital-favicon-32-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/avoradigital-favicon-16-16.png">
+  <!-- Apple icon asli 180x180 image honi chahiye, 16px ko stretch nahi karna -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/180x180.png">
 
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Professional Service Schema -->
+  <!-- ================= FOOTER SOCIAL ICONS (styling) ================= -->
+  <style>
+    .site-footer .footer-social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .site-footer .footer-social a {
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 50%;
+      color: #F5F5F2; background: transparent; text-decoration: none;
+      transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+    }
+    .site-footer .footer-social a:hover,
+    .site-footer .footer-social a:focus-visible {
+      background: #C7F000; border-color: #C7F000; color: #0B0D10; transform: translateY(-3px);
+    }
+    .site-footer .footer-social a:focus-visible { outline: 2px solid #C7F000; outline-offset: 3px; }
+    .site-footer .footer-social svg { width: 20px; height: 20px; fill: currentColor; display: block; }
+  </style>
+
+  <!-- ================= STRUCTURED DATA (ek connected @graph) ================= -->
+  <!-- Publish se pehle "REPLACE" search karein aur asli values daalein. Jo profile exist nahi karta, uski line hata dein. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Avora Digital",
-    "url": "https://avoradigital.online/",
-    "email": "hello@avoradigital.online",
-    "telephone": "+923043722067",
-    "description": "Avora Digital provides Shopify development, custom website development, digital marketing, Meta Ads, social media marketing, bottle label design and printing, and tissue packaging.",
-    "areaServed": {
-      "@type": "Country",
-      "name": "Pakistan"
-    },
-    "serviceType": [
-      "Shopify Development",
-      "Custom Web Development",
-      "Digital Marketing",
-      "Meta Ads Management",
-      "Facebook Marketing",
-      "Instagram Marketing",
-      "Bottle Label Design and Printing",
-      "Tissue Packaging Design and Printing"
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://avoradigital.online/#organization",
+        "name": "Avora Digital",
+        "url": "https://avoradigital.online/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://avoradigital.online/#logo",
+          "url": "https://avoradigital.online/assets/logo.png",
+          "width": 512,
+          "height": 512
+        },
+        "image": "https://avoradigital.online/assets/og-home.jpg",
+        "email": "hello@avoradigital.online",
+        "telephone": "+923043722067",
+        "description": "Avora Digital is a Pakistan-based digital and branding agency offering Shopify development, custom website development, and Meta Ads and social media marketing. It provides logo and label design for clients worldwide and, in Pakistan, also handles printing and delivery of custom-branded bottles and tissue paper.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "PK"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Pakistan"
+        },
+        "knowsAbout": [
+          "Shopify development",
+          "Custom website development",
+          "Meta Ads",
+          "Facebook and Instagram marketing",
+          "Logo and bottle label design",
+          "Bottle and tissue paper printing and delivery in Pakistan"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "telephone": "+923043722067",
+          "email": "hello@avoradigital.online",
+          "areaServed": "PK"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Avora Digital services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Shopify Development", "provider": { "@id": "https://avoradigital.online/#organization" } } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom Website Development", "provider": { "@id": "https://avoradigital.online/#organization" } } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Meta Ads and Social Media Marketing", "provider": { "@id": "https://avoradigital.online/#organization" } } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Logo and Bottle Label Design", "areaServed": "Worldwide", "provider": { "@id": "https://avoradigital.online/#organization" } } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom-Branded Bottle and Tissue Paper Printing and Delivery", "areaServed": { "@type": "Country", "name": "Pakistan" }, "provider": { "@id": "https://avoradigital.online/#organization" } } }
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/avoradigital.online",
+          "https://www.instagram.com/avor_adigital",
+          "https://www.linkedin.com/company/avora-digital",
+          "https://www.tiktok.com/avora_digital"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://avoradigital.online/#website",
+        "url": "https://avoradigital.online/",
+        "name": "Avora Digital",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://avoradigital.online/#organization" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://avoradigital.online/#webpage",
+        "url": "https://avoradigital.online/",
+        "name": "Shopify & Web Development Agency in Pakistan | Avora Digital",
+        "description": "Pakistan-based agency for Shopify, websites and Meta Ads. Logo and label design worldwide; printing and delivery of branded bottles and tissue paper in Pakistan.",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://avoradigital.online/#website" },
+        "about": { "@id": "https://avoradigital.online/#organization" },
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://avoradigital.online/assets/og-home.jpg"
+        }
+      }
     ]
   }
   </script>
 
-  <!-- Website Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Avora Digital",
-    "url": "https://avoradigital.online/"
-  }
+  <!-- ================= GOOGLE ANALYTICS 4 (consent-gated) =================
+       Function names (enableAnalytics / rejectAnalytics) wahi hain,
+       to aapke cookie banner ke buttons bina change ke chalenge.
+       Body mein banner ka HTML maujood hona zaroori hai, warna GA kabhi load nahi hoga. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag("consent", "default", {
+      analytics_storage: "denied",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied"
+    });
+
+    var GA_ID = "G-MNQBS8T0PB";
+    var CONSENT_KEY = "avora_cookie_consent";
+
+    function readConsent() {
+      try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
+    }
+    function saveConsent(value) {
+      try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
+    }
+
+    function loadGoogleAnalytics() {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    }
+
+    function enableAnalytics() {
+      saveConsent("accepted");
+      gtag("consent", "update", { analytics_storage: "granted" });
+      loadGoogleAnalytics();
+    }
+
+    function rejectAnalytics() {
+      saveConsent("rejected");
+      gtag("consent", "update", { analytics_storage: "denied" });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var consent = readConsent();
+      if (consent === "accepted") enableAnalytics();
+      else if (consent === "rejected") rejectAnalytics();
+    });
   </script>
-  <!-- ADDED: extra SEO / social metadata -->
-  <meta property="og:locale" content="en_US">
-  <meta property="og:image:alt" content="Avora Digital — Shopify development, web development and digital marketing agency">
-  <meta name="twitter:image:alt" content="Avora Digital — Shopify development, web development and digital marketing agency">
-  <meta name="geo.region" content="PK">
-  <meta name="geo.placename" content="Pakistan">
-
-  <!-- =====================================================
-       GOOGLE ANALYTICS 4
-       AHEM: G-XXXXXXXXXX ki jagah apni asli GA4 Measurement ID
-       daal dein (Google Analytics > Admin > Data Streams).
-       Jab tak ID na lagayen, tracking band rahegi.
-  ====================================================== -->
-  <!-- Google Analytics will be loaded only after analytics consent -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-
-  gtag("consent", "default", {
-    analytics_storage: "denied"
-  });
-
-  function loadGoogleAnalytics() {
-    if (window.__gaLoaded) return;
-
-    window.__gaLoaded = true;
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src =
-      "https://www.googletagmanager.com/gtag/js?id=G-MNQBS8T0PB";
-
-    document.head.appendChild(script);
-
-    gtag("js", new Date());
-
-    gtag("config", "G-MNQBS8T0PB", {
-      anonymize_ip: true
-    });
-  }
-
-  function enableAnalytics() {
-    localStorage.setItem(
-      "avora_cookie_consent",
-      "accepted"
-    );
-
-    gtag("consent", "update", {
-      analytics_storage: "granted"
-    });
-
-    loadGoogleAnalytics();
-  }
-
-  function rejectAnalytics() {
-    localStorage.setItem(
-      "avora_cookie_consent",
-      "rejected"
-    );
-
-    gtag("consent", "update", {
-      analytics_storage: "denied"
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-
-    const consent =
-      localStorage.getItem(
-        "avora_cookie_consent"
-      );
-
-    if (consent === "accepted") {
-      enableAnalytics();
-    }
-
-    if (consent === "rejected") {
-      rejectAnalytics();
-    }
-
-  });
-</script>
-
 </head>
 
 <body>
@@ -232,6 +259,10 @@
           </li>
 
           <li>
+            <a href="about.html" class="nav-link">About</a>
+          </li>
+
+          <li>
             <a href="services.html" class="nav-link">Services</a>
           </li>
 
@@ -243,9 +274,6 @@
             <a href="pricing.html" class="nav-link">Pricing</a>
           </li>
 
-          <li>
-            <a href="about.html" class="nav-link">About</a>
-          </li>
 
           <li>
             <a href="contact.html" class="nav-link">Contact</a>
@@ -293,7 +321,7 @@
             <br>
             Scale.
             <br>
-            <span>Brand</span>
+            <span>Brand.</span>
           
           </h1>
 
@@ -462,9 +490,9 @@
                 for performance, usability and conversion.
               </p>
 
-              <a href="services.html#web" class="text-link">
+              <a href="services.html#web" class="btn btn-outline service-card-btn">
                 Explore Web Services
-                <span>→</span>
+                <span>↗</span>
               </a>
 
             </div>
@@ -493,9 +521,9 @@
                 designed to reach the right people and generate growth.
               </p>
 
-              <a href="services.html#marketing" class="text-link">
+              <a href="services.html#marketing" class="btn btn-outline service-card-btn">
                 Explore Marketing
-                <span>→</span>
+                <span>↗</span>
               </a>
 
             </div>
@@ -524,9 +552,9 @@
       to improve performance, increase conversions and support long-term growth.
     </p>
 
-    <a href="services.html#web" class="text-link">
+    <a href="services.html#web" class="btn btn-outline service-card-btn">
       Explore Scale Services
-      <span>→</span>
+      <span>↗</span>
     </a>
 
   </div>
@@ -551,13 +579,13 @@
               </h3>
 
               <p>
-                Bottle labels and tissue packaging — from design and
-                printing to final delivery.
+                Logo and label design for clients worldwide. In Pakistan, we also
+                handle printing and delivery of custom-branded bottles and tissue paper.
               </p>
 
-              <a href="services.html#branding" class="text-link">
+              <a href="services.html#branding" class="btn btn-outline service-card-btn">
                 Explore Branding
-                <span>→</span>
+                <span>↗</span>
               </a>
 
             </div>
@@ -593,7 +621,7 @@
 
           </div>
 
-          <a href="contact.html" class="btn btn-outline magnetic">
+          <a href="contact.html" class="btn btn-outline service-card-btn">
             View Our Work?
             <span>↗</span>
           </a>
@@ -862,11 +890,11 @@
 
             <div class="service-left">
               <span>04</span>
-              <h3>Bottle Labels</h3>
+              <h3>Logo &amp; Bottle Labels</h3>
             </div>
 
             <p>
-              Label design, printing and delivery for physical products.
+              Logo and label design for clients worldwide. In Pakistan, we also handle printing and delivery of branded bottles.
             </p>
 
             <span class="service-arrow">↗</span>
@@ -882,7 +910,7 @@
             </div>
 
             <p>
-              Custom tissue packaging from concept to delivered product.
+              Custom-branded tissue paper matched to your bottles and labels, printed and delivered. Available in Pakistan.
             </p>
 
             <span class="service-arrow">↗</span>
@@ -1124,7 +1152,7 @@
 
     <!-- Core Capabilities -->
     <div class="stat reveal">
-      <strong class="counter" data-target="3">0</strong>
+      <strong class="counter" data-target="4">0</strong>
       <p>Core Capabilities</p>
     </div>
 
@@ -1172,9 +1200,9 @@
               your actual requirements.
             </p>
 
-            <a href="pricing.html" class="text-link large-link">
+            <a href="pricing.html" class="btn btn-outline service-card-btn">
               Explore Starting Prices
-              <span>→</span>
+              <span>↗</span>
             </a>
 
           </div>
@@ -1245,6 +1273,27 @@
             Build. Market. Scale. Brand.
           </p>
 
+          <!-- SOCIAL LINKS — publish se pehle "REPLACE" search karein -->
+          <div class="footer-social" aria-label="Avora Digital on social media">
+
+            <a href="https://www.linkedin.com/company/avora-digital" target="_blank" rel="noopener noreferrer" aria-label="Avora Digital on LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+            </a>
+
+            <a href="https://www.facebook.com/avoradigital.online" target="_blank" rel="noopener noreferrer" aria-label="Avora Digital on Facebook" title="Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H7v4h3v8h4v-8h3l1-4h-4V8z"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com/avor_adigital" target="_blank" rel="noopener noreferrer" aria-label="Avora Digital on Instagram" title="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.2"/></svg>
+            </a>
+
+            <a href="https://www.tiktok.com/avora_digital" target="_blank" rel="noopener noreferrer" aria-label="Avora Digital on TikTok" title="TikTok">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16.5 3c.3 2.3 1.7 3.9 4 4.1v3.2c-1.5 0-2.9-.5-4-1.3v6.2a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v3.3a2.5 2.5 0 1 0 1.6 2.3V3h3.2z"/></svg>
+            </a>
+
+          </div>
+
         </div>
 
 
@@ -1255,10 +1304,10 @@
             <span class="footer-heading">Navigate</span>
 
             <a href="index.html">Home</a>
+            <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <!-- <a href="work.html">Work</a> -->
             <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
 
           </div>
@@ -1271,7 +1320,7 @@
             <a href="services.html#shopify">Shopify</a>
             <a href="services.html#custom-web">Web Development</a>
             <a href="services.html#meta-ads">Meta Ads</a>
-            <a href="services.html#labels">Bottle Labels</a>
+            <a href="services.html#labels">Logo &amp; Labels</a>
             <a href="services.html#tissue">Tissue Packaging</a>
 
           </div>

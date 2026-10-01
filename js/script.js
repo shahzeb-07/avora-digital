@@ -731,26 +731,13 @@ document.addEventListener("DOMContentLoaded", () => {
      No-op on pages without .price-value / .currency-btn.
   ========================================================= */
 
-  const pricing = {
-    "shopify-basic": { USD: 125, PKR: 34999 },
-    "shopify-standard": { USD: 215, PKR: 59999 },
-    "shopify-premium": { USD: 360, PKR: 99999 },
-    "web-basic": { USD: 107, PKR: 29999 },
-    "web-standard": { USD: 196, PKR: 54999 },
-    "web-premium": { USD: 321, PKR: 89999 },
-    "social-basic": { USD: 54, PKR: 14999 },
-    "social-standard": { USD: 89, PKR: 24999 },
-    "social-premium": { USD: 143, PKR: 39999 },
-    "ads-basic": { USD: 54, PKR: 14999 },
-    "ads-standard": { USD: 89, PKR: 24999 },
-    "ads-premium": { USD: 143, PKR: 39999 },
-    "labels-basic": { USD: 29, PKR: 7999 },
-    "labels-standard": { USD: 46, PKR: 12999 },
-    "labels-premium": { USD: 71, PKR: 19999 },
-    "tissue-basic": { USD: 29, PKR: 7999 },
-    "tissue-standard": { USD: 54, PKR: 14999 },
-    "tissue-premium": { USD: 89, PKR: 24999 },
-  };
+  /* Prices are read directly from each element's data-usd / data-pkr
+     attributes in the HTML (see updatePrices below). There is no
+     separate hardcoded table here anymore -- the old one silently
+     overwrote whatever price the HTML actually had, and had no
+     entries at all for the Logo & Brand Identity tiers. Whatever
+     number is in the HTML is now what gets shown, in both
+     currencies, automatically. */
 
   const currencySettings = {
     USD: { symbol: "$", position: "before" },
@@ -767,12 +754,18 @@ document.addEventListener("DOMContentLoaded", () => {
     currentCurrency = savedCurrency;
   }
 
-  const formatPrice = (value, currency) => {
+  const formatPrice = (value, currency, rawString) => {
+    // Preserve exact cents if the HTML actually specified them
+    // (e.g. data-usd="129.99"); otherwise show a clean whole number.
+    const hasCents =
+      typeof rawString === "string" && rawString.includes(".");
+    const digits = { minimumFractionDigits: hasCents ? 2 : 0, maximumFractionDigits: hasCents ? 2 : 0 };
+
     if (currency === "USD") {
-      return Number(value).toLocaleString("en-US", { maximumFractionDigits: 0 });
+      return Number(value).toLocaleString("en-US", digits);
     }
     if (currency === "PKR") {
-      return Number(value).toLocaleString("en-PK", { maximumFractionDigits: 0 });
+      return Number(value).toLocaleString("en-PK", digits);
     }
     return value;
   };
@@ -781,20 +774,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const currency = currencySettings[currentCurrency];
 
     priceElements.forEach((priceElement) => {
-      const priceId = priceElement.dataset.priceId;
-      const priceData = pricing[priceId];
+      const raw =
+        currentCurrency === "PKR"
+          ? priceElement.dataset.pkr
+          : priceElement.dataset.usd;
 
-      if (!priceData) {
-        if (priceId) {
-          console.warn(`Avora Digital: no pricing entry for "${priceId}"`);
+      if (raw === undefined || raw === "") {
+        if (priceElement.dataset.priceId) {
+          console.warn(
+            `Avora Digital: "${priceElement.dataset.priceId}" has no data-${currentCurrency.toLowerCase()} attribute in the HTML`
+          );
         }
         return;
       }
 
-      priceElement.textContent = formatPrice(
-        priceData[currentCurrency],
-        currentCurrency
-      );
+      priceElement.textContent = formatPrice(Number(raw), currentCurrency, raw);
     });
 
     currencySymbols.forEach((symbolElement) => {
