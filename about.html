@@ -32,7 +32,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-    <link rel="canonical" href="https://avoradigital.online/about.html">
+    <link rel="canonical" href="https://avoradigital.online/about">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -41,7 +41,7 @@
         property="og:description"
         content="Avora Digital helps businesses build better websites, market smarter and create stronger physical brand experiences."
     >
-    <meta property="og:url" content="https://avoradigital.online/about.html">
+    <meta property="og:url" content="https://avoradigital.online/about">
     <meta property="og:site_name" content="Avora Digital">
     <meta property="og:image" content="https://avoradigital.online/assets/og-about.jpg">
 
@@ -128,7 +128,7 @@
         "@context": "https://schema.org",
         "@type": "AboutPage",
         "name": "About Avora Digital",
-        "url": "https://avoradigital.online/about.html",
+        "url": "https://avoradigital.online/about",
         "description": "About Avora Digital and its approach to web development, marketing, branding and packaging."
     }
     </script>
@@ -155,7 +155,10 @@
   }
 
   gtag("consent", "default", {
-    analytics_storage: "denied"
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied"
   });
 
   function loadGoogleAnalytics() {
@@ -223,20 +226,6 @@
 
 <body>
 
-    <!-- =========================
-         PAGE LOADER
-    ========================== -->
-    <!-- <div class="page-loader" id="pageLoader" aria-hidden="true">
-        <div class="loader-mark">
-            <span>A</span>
-        </div>
-
-        <div class="loader-line">
-            <span></span>
-        </div>
-    </div> -->
-
-
     <!-- ==============================
        PAGE LOADER
   =============================== -->
@@ -255,7 +244,7 @@
 
         <nav class="navbar container" aria-label="Primary Navigation">
 
-            <a href="index.html" class="brand" aria-label="Avora Digital Home">
+            <a href="/" class="brand" aria-label="Avora Digital Home">
                 <span class="brand-mark">A</span>
 
                 <span class="brand-name">
@@ -279,21 +268,21 @@
 
             <div class="nav-menu" id="mainNavigation">
 
-                <a href="index.html" class="nav-link">Home</a>
+                <a href="/" class="nav-link">Home</a>
 
-                <a href="about.html" class="nav-link active">About</a>
+                <a href="about" class="nav-link active">About</a>
 
-                <a href="services.html" class="nav-link">Services</a>
+                <a href="services" class="nav-link">Services</a>
 
-                <!-- <a href="work.html">Work</a> -->
+                <!-- <a href="work">Work</a> -->
 
-                <a href="pricing.html" class="nav-link">Pricing</a>
-
-
-                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="pricing" class="nav-link">Pricing</a>
 
 
-                <a href="contact.html" class="nav-cta">
+                <a href="contact" class="nav-link">Contact</a>
+
+
+                <a href="contact" class="nav-cta">
                     Start a Project
                     <span>↗</span>
                 </a>
@@ -345,12 +334,12 @@
 
                     <div class="hero-actions">
 
-                        <a href="contact.html" class="btn btn-primary magnetic">
+                        <a href="contact" class="btn btn-primary magnetic">
                             Start a Project
                             <span>↗</span>
                         </a>
 
-                        <a href="services.html" class="btn btn-secondary">
+                        <a href="services" class="btn btn-secondary">
                             Explore Services
                             <span>↗</span>
                         </a>
@@ -535,7 +524,7 @@
 
                         </div>
 
-                        <a href="services.html#web" class="btn btn-outline service-card-btn">
+                        <a href="services#web" class="btn btn-outline service-card-btn">
                             Explore Build
                             <span>↗</span>
                         </a>
@@ -580,7 +569,7 @@
 
                         </div>
 
-                        <a href="services.html#marketing" class="btn btn-outline service-card-btn">
+                        <a href="services#marketing" class="btn btn-outline service-card-btn">
                             Explore Market
                             <span>↗</span>
                         </a>
@@ -625,7 +614,7 @@
 
     </div>
 
-    <a href="services.html#web" class="btn btn-outline service-card-btn">
+    <a href="services#web" class="btn btn-outline service-card-btn">
         Explore Scale
         <span>↗</span>
     </a>
@@ -669,7 +658,7 @@
 
                         </div>
 
-                        <a href="services.html#branding" class="btn btn-outline service-card-btn">
+                        <a href="services#branding" class="btn btn-outline service-card-btn">
                             Explore Brand
                             <span>↗</span>
                         </a>
@@ -1185,7 +1174,7 @@
                             direction across the project.
                         </p>
 
-                        <a href="contact.html" class="btn btn-primary magnetic">
+                        <a href="contact" class="btn btn-primary magnetic">
                             Let's Work Together
                             <span>↗</span>
                         </a>
@@ -1284,7 +1273,7 @@
                             branded.
                         </p>
 
-                        <a href="contact.html" class="btn btn-primary btn-large magnetic">
+                        <a href="contact" class="btn btn-primary btn-large magnetic">
                             Start a Project
                             <span>↗</span>
                         </a>
@@ -1311,7 +1300,7 @@
 
         <div class="footer-brand">
 
-          <a href="index.html" class="brand footer-logo">
+          <a href="/" class="brand footer-logo">
             <span class="brand-mark">A</span>
             <span class="brand-name">AVORA<span>.</span></span>
           </a>
@@ -1353,12 +1342,12 @@
 
             <span class="footer-heading">Navigate</span>
 
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <!-- <a href="work.html">Work</a> -->
-            <a href="pricing.html">Pricing</a>
-            <a href="contact.html">Contact</a>
+            <a href="/">Home</a>
+            <a href="about">About</a>
+            <a href="services">Services</a>
+            <!-- <a href="work">Work</a> -->
+            <a href="pricing">Pricing</a>
+            <a href="contact">Contact</a>
 
           </div>
 
@@ -1366,11 +1355,11 @@
 
             <span class="footer-heading">Services</span>
 
-            <a href="services.html#shopify">Shopify</a>
-            <a href="services.html#custom-web">Custom Web</a>
-            <a href="services.html#marketing">Marketing</a>
-            <a href="services.html#meta-ads">Meta Ads</a>
-            <a href="services.html#branding">Packaging</a>
+            <a href="services#shopify">Shopify</a>
+            <a href="services#custom-web">Web Development</a>
+            <a href="services#meta-ads">Meta Ads</a>
+            <a href="services#labels">Logo &amp; Labels</a>
+            <a href="services#tissue">Tissue Packaging</a>
 
           </div>
 
@@ -1380,6 +1369,14 @@
 
             <a href="mailto:hello@avoradigital.online">
               hello@avoradigital.online
+            </a>
+
+            <a href="privacy">
+              Privacy Policy
+            </a>
+
+            <a href="terms">
+              Terms &amp; Conditions
             </a>
 
             <!-- WHATSAPP DISABLED — future mein activate karne ke liye is comment ko hata dein
@@ -1448,7 +1445,8 @@
       <p id="cookieDescription">
         We use analytics cookies to understand how visitors
         use our website and improve your experience.
-        You can accept or reject analytics cookies.
+        You can accept or reject analytics cookies. Read our
+        <a href="privacy">Privacy Policy</a>.
       </p>
 
     </div>

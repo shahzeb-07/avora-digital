@@ -20,10 +20,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/avoradigital-favicon-16-16.png">
 
 <!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/avoradigital-favicon-16-16.png">
-
-<!-- Apple Touch Icon -->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/avoradigital-favicon 16 x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/180x180.png">
 
     <meta
         name="description"
@@ -65,7 +62,7 @@
 
     <link
         rel="canonical"
-        href="https://avoradigital.online/contact.html"
+        href="https://avoradigital.online/contact"
     >
 
 
@@ -90,7 +87,7 @@
 
     <meta
         property="og:url"
-        content="https://avoradigital.online/contact.html"
+        content="https://avoradigital.online/contact"
     >
 
     <meta
@@ -228,10 +225,52 @@
         "@context": "https://schema.org",
         "@type": "ContactPage",
         "name": "Contact Avora Digital",
-        "url": "https://avoradigital.online/contact.html",
+        "url": "https://avoradigital.online/contact",
         "description": "Contact Avora Digital to discuss Shopify development, websites, marketing, advertising, branding and packaging projects."
     }
 
+    </script>
+
+    <!-- ADDED: FAQ schema (matches the active FAQs in the page body) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Can I request only one service?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. You can request a single service such as Shopify development, Meta Ads, social media marketing, bottle labels or tissue packaging."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Can I combine multiple services?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Services can be combined into a broader project or package when the requirements make sense."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is the form a paid consultation?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Submitting the project form is simply an inquiry and does not require payment."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What information should I provide?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Share your service requirement, business context, project goals, current website or social presence if relevant, budget range and any important deadline or technical requirement."
+                }
+            }
+        ]
+    }
     </script>
 
   <!-- ADDED: extra SEO / social metadata -->
@@ -257,7 +296,10 @@
   }
 
   gtag("consent", "default", {
-    analytics_storage: "denied"
+    analytics_storage: "denied",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied"
   });
 
   function loadGoogleAnalytics() {
@@ -356,7 +398,7 @@
             <!-- BRAND -->
 
             <a
-                href="index.html"
+                href="/"
                 class="brand"
                 aria-label="Avora Digital Home"
             >
@@ -398,28 +440,28 @@
                 id="mainNavigation"
             >
 
-                <a href="index.html" class="nav-link">
+                <a href="/" class="nav-link">
                     Home
                 </a>
 
-                <a href="about.html" class="nav-link">
+                <a href="about" class="nav-link">
                     About
                 </a>
 
-                <a href="services.html" class="nav-link">
+                <a href="services" class="nav-link">
                     Services
                 </a>
 
-                <!-- <a href="work.html">
+                <!-- <a href="work">
                     Work
                 </a> -->
 
-                <a href="pricing.html" class="nav-link">
+                <a href="pricing" class="nav-link">
                     Pricing
                 </a>
 
                 <a
-                    href="contact.html"
+                    href="contact"
                     class="nav-link active"
                 >
                     Contact
@@ -933,6 +975,18 @@
                                             </option>
 
                                             <option
+                                                value="Social Media Management"
+                                            >
+                                                Social Media Management
+                                            </option>
+
+                                            <option
+                                                value="Printing & Delivery"
+                                            >
+                                                Printing & Delivery
+                                            </option>
+
+                                            <option
                                                 value="Complete Brand Build"
                                             >
                                                 Complete Brand Build
@@ -992,7 +1046,7 @@
                                         >
 
                                         <span>
-                                            Under 30K
+                                            Under PKR 30K
                                         </span>
 
                                     </label>
@@ -1008,7 +1062,7 @@
                                         >
 
                                         <span>
-                                            30K – 50K
+                                            PKR 30K – 50K
                                         </span>
 
                                     </label>
@@ -1024,7 +1078,7 @@
                                         >
 
                                         <span>
-                                            50K – 100K
+                                            PKR 50K – 100K
                                         </span>
 
                                     </label>
@@ -1040,7 +1094,7 @@
                                         >
 
                                         <span>
-                                            100K+
+                                            PKR 100K+
                                         </span>
 
                                     </label>
@@ -1171,13 +1225,13 @@
                                 <div>
 
                                     <h3>
-                                        Request prepared.
+                                        Request sent.
                                     </h3>
 
                                     <p>
-                                        Your project details are ready.
-                                        We will get back to you over
-                                        email shortly.
+                                        Thanks — your project request has
+                                        been sent. We usually reply within
+                                        one business day.
                                     </p>
 
                                 </div>
@@ -1638,7 +1692,7 @@
 
             <!-- BRAND -->
             <div class="footer-brand">
-                <a href="index.html" class="brand footer-logo">
+                <a href="/" class="brand footer-logo">
                     <span class="brand-mark">
                         A
                     </span>
@@ -1685,27 +1739,27 @@
                 <div class="footer-column">
                     <span class="footer-heading">Navigate</span>
 
-                    <a href="index.html">
+                    <a href="/">
                         Home
                     </a>
 
-                    <a href="about.html">
+                    <a href="about">
                         About
                     </a>
 
-                    <a href="services.html">
+                    <a href="services">
                         Services
                     </a>
 
-                    <!-- <a href="work.html">
+                    <!-- <a href="work">
                         Work
                     </a> -->
 
-                    <a href="pricing.html">
+                    <a href="pricing">
                         Pricing
                     </a>
 
-                    <a href="contact.html">
+                    <a href="contact">
                         Contact
                     </a>
                 </div>
@@ -1714,24 +1768,24 @@
                 <div class="footer-column">
                     <span class="footer-heading">Services</span>
 
-                    <a href="services.html#shopify">
+                    <a href="services#shopify">
                         Shopify
                     </a>
 
-                    <a href="services.html#custom-web">
-                        Custom Web
+                    <a href="services#custom-web">
+                        Web Development
                     </a>
 
-                    <a href="services.html#marketing">
-                        Marketing
-                    </a>
-
-                    <a href="services.html#meta-ads">
+                    <a href="services#meta-ads">
                         Meta Ads
                     </a>
 
-                    <a href="services.html#branding">
-                        Logo & Packaging
+                    <a href="services#labels">
+                        Logo &amp; Labels
+                    </a>
+
+                    <a href="services#tissue">
+                        Tissue Packaging
                     </a>
                 </div>
 
@@ -1741,6 +1795,14 @@
 
                     <a href="mailto:hello@avoradigital.online">
                         hello@avoradigital.online
+                    </a>
+
+                    <a href="privacy">
+                        Privacy Policy
+                    </a>
+
+                    <a href="terms">
+                        Terms &amp; Conditions
                     </a>
 
                     <!-- WHATSAPP DISABLED — future mein activate karne ke liye is comment ko hata dein
@@ -1809,7 +1871,8 @@
       <p id="cookieDescription">
         We use analytics cookies to understand how visitors
         use our website and improve your experience.
-        You can accept or reject analytics cookies.
+        You can accept or reject analytics cookies. Read our
+        <a href="privacy">Privacy Policy</a>.
       </p>
 
     </div>

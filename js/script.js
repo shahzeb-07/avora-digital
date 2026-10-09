@@ -465,9 +465,12 @@ document.addEventListener("DOMContentLoaded", () => {
       facebook: "Facebook Marketing",
       instagram: "Instagram Marketing",
       "meta-ads": "Meta Ads Management",
-      "bottle-labels": "Bottle Labels",
+      "bottle-labels": "Logo & Bottle Labels",
       tissue: "Tissue Packaging",
       "complete-brand": "Complete Brand Build",
+      "social-media": "Social Media Management",
+      logo: "Logo Design",
+      printing: "Printing & Delivery",
     };
 
     const packageMap = {
@@ -478,8 +481,15 @@ document.addEventListener("DOMContentLoaded", () => {
       "complete-brand": "Complete Brand Build package",
     };
 
+    const tierMap = {
+      essential: "Essential",
+      professional: "Professional",
+      signature: "Signature",
+    };
+
     const selectedService = serviceMap[params.get("service")];
     const selectedPackage = packageMap[params.get("package")];
+    const selectedTier = tierMap[params.get("tier")];
 
     // NOTE: this sets the <select>'s value to the human-readable LABEL
     // ("Shopify Development"), which only works if an <option value="...">
@@ -488,6 +498,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // check the actual <select id="service"> markup against serviceMap.
     if (service && selectedService) {
       service.value = selectedService;
+    }
+
+    // Pricing-page tier buttons (Essential / Professional / Signature) all
+    // send the same ?service=... value — the tier itself isn't a form
+    // field, so it's folded into the pre-filled brief text instead, the
+    // same way the combined packages below are.
+    if (selectedTier && selectedService && message && !message.value) {
+      message.value = `I'm interested in the ${selectedTier} tier for ${selectedService}. Please share the next steps and a tailored quote.`;
     }
 
     if (selectedPackage) {
@@ -653,7 +671,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const result = await response.json().catch(() => ({}));
-        emailSent = response.ok && result.success !== "false";
+        // FormSubmit's docs don't pin down whether `success` comes back as
+        // the string "false" or the boolean false on failure, so both are
+        // treated as failure here rather than assuming one or the other.
+        emailSent =
+          response.ok &&
+          result.success !== "false" &&
+          result.success !== false;
 
         if (!emailSent) {
           failureReason = result.message || `HTTP ${response.status}`;
