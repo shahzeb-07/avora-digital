@@ -1,0 +1,45 @@
+[
+  {
+    "slug": "fiscora",
+    "title": "Fiscora",
+    "type": "in-house",
+    "category": "Web App",
+    "year": "2026",
+    "deployedAt": "",
+    "summary": "Free financial calculators for small businesses: 18 tools in 10 languages, with live gold and currency rates.",
+    "liveUrl": "https://getfiscora.com",
+    "image": "https://getfiscora.com/og.png",
+    "imageAlt": "Fiscora homepage preview",
+    "featured": true,
+    "order": 1,
+    "role": [
+      "Product design",
+      "Development",
+      "Multilingual SEO"
+    ],
+    "stack": [],
+    "highlights": [
+      "18 calculators",
+      "10 languages",
+      "Urdu & Arabic RTL",
+      "Live gold & FX rates"
+    ],
+    "client": "",
+    "caseStudy": {
+      "overview": "Fiscora is our own product: a free set of financial calculators for small businesses, with a finance dashboard in development. Avora Digital designed, built and runs it, and we use it to test the same performance, multilingual and SEO practices we apply to client work.",
+      "challenge": "Small business owners juggle margins, VAT, cash flow, zakat and gold prices across generic tools. Most of those tools are English-only and ignore local details: tola and karat for gold, silver or gold nisab for zakat, PKR and Gulf VAT, or the returns and courier costs that decide whether a cash-on-delivery store is actually profitable.",
+      "solution": "We built 18 focused calculators that each do one job well, explain their formula in plain language, show a worked example and answer the common questions on the same page. The whole site is available in 10 languages, each on its own URL with hreflang, so every language version can be found in search.",
+      "features": [
+        "18 calculators: loan, ROI, profit margin, break-even, VAT/GST, cash flow, invoice, pricing, salary, investment, zakat, gold, e-commerce profit and loss and more",
+        "Every calculator explains its formula, includes a worked example and an FAQ",
+        "10 languages including Urdu and Arabic (right-to-left) and Roman Urdu, each with its own URL and hreflang tags",
+        "Live gold and silver prices and exchange rates, refreshed every minute, with a manual override",
+        "Local detail: tola and karat for gold, silver or gold nisab for zakat, returns and courier costs for e-commerce",
+        "Privacy-first: figures typed into a calculator stay in the browser, and analytics only load after cookie consent",
+        "No account needed to use any calculator"
+      ],
+      "results": [],
+      "status": "All 18 calculators are live and free. The finance dashboard is in pre-launch, with plans and launch pricing published."
+    }
+  }
+]

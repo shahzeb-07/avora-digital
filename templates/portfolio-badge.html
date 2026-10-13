@@ -1,0 +1,28 @@
+<!-- Avora Digital portfolio badge
+     Paste into each portfolio site on Netlify:
+     Site configuration > Build & deploy > Post processing > Snippet injection
+     > Add snippet > "Before </body>". No code change in the project needed.
+     It reads that site's /portfolio.json and links to its case study. -->
+<script>
+(function () {
+  fetch("/portfolio.json", { cache: "no-store" })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (p) {
+      if (!p || !p.slug) return;
+      var a = document.createElement("a");
+      a.href = "https://avoradigital.online/case-studies/" + encodeURIComponent(p.slug);
+      a.target = "_blank";
+      a.rel = "noopener";
+      a.textContent = "View case study · Avora Digital ↗";
+      a.setAttribute("style", [
+        "position:fixed", "left:50%", "bottom:16px", "transform:translateX(-50%)",
+        "z-index:2147483000", "padding:10px 18px", "border-radius:999px",
+        "background:#0B0D10", "color:#F5F5F2", "border:1px solid #C7F000",
+        "font:600 13px/1.2 system-ui,-apple-system,Segoe UI,sans-serif",
+        "text-decoration:none", "box-shadow:0 10px 30px rgba(0,0,0,.35)", "white-space:nowrap"
+      ].join(";"));
+      document.body.appendChild(a);
+    })
+    .catch(function () {});
+})();
+</script>

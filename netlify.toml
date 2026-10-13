@@ -1,7 +1,12 @@
 [build]
   publish = "."
+  # Builds /work and /case-studies/* from Netlify + data/projects.manual.json
+  command = "node scripts/build-work.mjs"
 
-# Security headers — sab pages per apply hongi
+[build.environment]
+  NODE_VERSION = "20"
+
+# Security headers — sab pages par apply hongi
 [[headers]]
   for = "/*"
   [headers.values]
@@ -10,13 +15,21 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# CSS/JS ko long cache dena — browser dobara download nahi karega jab tak file naam change na ho
+# CSS/JS: browser har dafa Netlify se check karega (304 = fast), is liye
+# naya deploy foran sab visitors tak pohanchta hai. Pehle "immutable" laga
+# tha jis ki wajah se purane visitors ko fixes ek saal tak nahi milte.
 [[headers]]
   for = "/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
   for = "/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Images: 1 din cache (OG images replace hon to jaldi update ho jayen)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

@@ -1,0 +1,15 @@
+# Rebuilds avoradigital.online once a day so newly deployed portfolio
+# sites appear on /work even if you forget to add a deploy webhook.
+# Setup: GitHub repo > Settings > Secrets and variables > Actions >
+# New secret named NETLIFY_BUILD_HOOK = your Netlify build hook URL.
+name: Rebuild portfolio
+on:
+  schedule:
+    - cron: "15 3 * * *"   # 08:15 Pakistan time
+  workflow_dispatch: {}
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Netlify build
+        run: curl -fsS -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"

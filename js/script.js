@@ -1,22 +1,5 @@
 /* =========================================================
-   AVORA DIGITAL — SITE BEHAVIOUR (merged: old_js + pricing_js)
-   ---------------------------------------------------------
-   Everything runs inside one DOMContentLoaded so there is a
-   single, predictable startup order and no top-level globals.
-
-   MERGE NOTES (read once, then delete this block):
-   - Scroll reveal now adds BOTH "is-visible" (old_js) and
-     "show" (pricing_js) classes. Check which one your CSS
-     actually styles, then delete the other everywhere below
-     and in your CSS.
-   - FAQ accordion now matches EITHER ".faq-question" or a
-     bare "button" inside ".faq-item", because the two source
-     files assumed different markup. If every page uses the
-     same FAQ markup, simplify the selector back down.
-   - #currentYear and #year are both supported.
-   - Pricing/currency section only does anything on pages that
-     actually have .price-value / .currency-btn elements — it
-     is a safe no-op everywhere else.
+   AVORA DIGITAL — SITE BEHAVIOUR
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -49,6 +32,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const currentPage = normalisePage(window.location.pathname);
 
+  // localStorage throws in some private / locked-down browsers.
+  // Never let that stop the rest of the site from working.
+  const store = {
+    get(key) {
+      try { return window.localStorage.getItem(key); } catch (e) { return null; }
+    },
+    set(key, value) {
+      try { window.localStorage.setItem(key, value); } catch (e) { /* ignore */ }
+    },
+  };
+
   const header = document.getElementById("siteHeader");
   const loader = document.getElementById("pageLoader");
 
@@ -56,17 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
      PAGE LOADER
   ========================================================= */
 
-  const hideLoader = () => loader?.classList.add("loaded");
-
-  if (document.readyState === "complete") {
-    window.setTimeout(hideLoader, 450);
-  } else {
-    window.addEventListener(
-      "load",
-      () => window.setTimeout(hideLoader, 450),
-      { once: true }
-    );
-  }
+  // Hide as soon as the DOM is ready. Waiting for window "load" (fonts,
+  // analytics, etc.) kept every page blank for an extra second+.
+  requestAnimationFrame(() => loader?.classList.add("loaded"));
 
   /* =========================================================
      CURRENT YEAR
@@ -169,8 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const target = Number(counter.dataset.target);
     if (!Number.isFinite(target)) return;
 
+    const suffix = counter.dataset.suffix || "";
+
     if (reducedMotion) {
-      counter.textContent = String(target);
+      counter.textContent = `${target}${suffix}`;
       return;
     }
 
@@ -178,14 +166,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const update = (time) => {
       const progress = Math.min((time - start) / 1500, 1);
-      counter.textContent = String(
-        Math.floor(target * (1 - Math.pow(1 - progress, 3)))
-      );
+      counter.textContent =
+        String(Math.floor(target * (1 - Math.pow(1 - progress, 3)))) + suffix;
 
       if (progress < 1) {
         requestAnimationFrame(update);
       } else {
-        counter.textContent = String(target);
+        counter.textContent = `${target}${suffix}`;
       }
     };
 
@@ -206,7 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
       { threshold: 0.5 }
     );
 
-    counters.forEach((item) => counterObserver.observe(item));
+    // The HTML holds the real number (for search engines and AI crawlers
+    // that don't run JS); reset to 0 only when we're about to animate.
+    counters.forEach((item) => {
+      item.textContent = `0${item.dataset.suffix || ""}`;
+      counterObserver.observe(item);
+    });
   } else {
     counters.forEach(animateCounter);
   }
@@ -233,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document
       .querySelectorAll(
-        ".service-detail-card, .packaging-card, .price-card, .marketing-price-card, .packaging-price-card, .pillar-card"
+        ".service-detail-card, .packaging-card, .tier-card, .pillar-card"
       )
       .forEach((card) => {
         card.addEventListener("mousemove", (event) => {
@@ -307,6 +299,29 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     }
   }
+
+  /* =========================================================
+     WORK FILTERS (work page)
+  ========================================================= */
+
+  const workFilters = document.querySelectorAll("[data-work-filter]");
+  const workItems = document.querySelectorAll("[data-work-grid] .work-item[data-category]");
+
+  workFilters.forEach((button) => {
+    button.addEventListener("click", () => {
+      const value = button.dataset.workFilter;
+
+      workFilters.forEach((b) => {
+        const active = b === button;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-pressed", String(active));
+      });
+
+      workItems.forEach((item) => {
+        item.hidden = value !== "all" && item.dataset.category !== value;
+      });
+    });
+  });
 
   /* =========================================================
      FAQ ACCORDION
@@ -491,11 +506,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectedPackage = packageMap[params.get("package")];
     const selectedTier = tierMap[params.get("tier")];
 
-    // NOTE: this sets the <select>'s value to the human-readable LABEL
-    // ("Shopify Development"), which only works if an <option value="...">
-    // matches that exact string. If your <option> values are the short
-    // keys instead ("shopify", "custom-web", ...), this silently fails —
-    // check the actual <select id="service"> markup against serviceMap.
     if (service && selectedService) {
       service.value = selectedService;
     }
@@ -506,6 +516,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // same way the combined packages below are.
     if (selectedTier && selectedService && message && !message.value) {
       message.value = `I'm interested in the ${selectedTier} tier for ${selectedService}. Please share the next steps and a tailored quote.`;
+    }
+
+    if (params.get("intent") === "portfolio" && message && !message.value) {
+      message.value =
+        "I'd like to see examples of your past work relevant to my project. Here's what I'm planning:\n\n";
     }
 
     if (selectedPackage) {
@@ -628,6 +643,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = new FormData(form);
       const readField = (key) => String(data.get(key) || "").trim();
+
+      // Spam trap: real people never see or fill this field.
+      if (readField("_honey")) {
+        form.reset();
+        setStatus("Thanks — your project request has been sent.", "success");
+        return;
+      }
 
       const name = readField("name");
       const email = readField("email");
@@ -773,7 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const currencySymbols = document.querySelectorAll(".currency-symbol");
 
   let currentCurrency = "USD";
-  const savedCurrency = localStorage.getItem("avoraCurrency");
+  const savedCurrency = store.get("avoraCurrency");
   if (savedCurrency === "USD" || savedCurrency === "PKR") {
     currentCurrency = savedCurrency;
   }
@@ -825,7 +847,7 @@ document.addEventListener("DOMContentLoaded", () => {
       button.setAttribute("aria-pressed", String(isActive));
     });
 
-    localStorage.setItem("avoraCurrency", currentCurrency);
+    store.set("avoraCurrency", currentCurrency);
   };
 
   currencyButtons.forEach((button) => {
@@ -856,7 +878,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const showCookieSettings = () => cookieSettings?.classList.add("show");
 
   const acceptAnalytics = () => {
-    localStorage.setItem(COOKIE_KEY, "accepted");
+    store.set(COOKIE_KEY, "accepted");
     if (typeof gtag === "function") {
       gtag("consent", "update", { analytics_storage: "granted" });
     }
@@ -868,7 +890,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const rejectAnalytics = () => {
-    localStorage.setItem(COOKIE_KEY, "rejected");
+    store.set(COOKIE_KEY, "rejected");
     if (typeof gtag === "function") {
       gtag("consent", "update", { analytics_storage: "denied" });
     }
@@ -880,7 +902,7 @@ document.addEventListener("DOMContentLoaded", () => {
   cookieReject?.addEventListener("click", rejectAnalytics);
   cookieSettings?.addEventListener("click", showCookieBanner);
 
-  const existingConsent = localStorage.getItem(COOKIE_KEY);
+  const existingConsent = store.get(COOKIE_KEY);
   if (!existingConsent) {
     window.setTimeout(showCookieBanner, 700);
   } else {

@@ -1,7 +1,16 @@
-/index.html    /          301
-/about.html    /about     301
-/services.html /services  301
-/pricing.html  /pricing   301
-/contact.html  /contact   301
-/privacy.html  /privacy   301
-/terms.html    /terms     301
+/index.html              /          301
+/about.html              /about     301
+/services.html           /services  301
+/pricing.html            /pricing   301
+/contact.html            /contact   301
+/privacy.html            /privacy   301
+/terms.html              /terms     301
+/term&conditions.html    /terms     301
+/term&conditions         /terms     301
+/term%26conditions.html  /terms     301
+/term%26conditions       /terms     301
+
+# Build-only folders: not public pages
+/templates/*  /404.html  404
+/scripts/*    /404.html  404
+/data/*       /404.html  404

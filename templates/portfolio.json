@@ -1,0 +1,24 @@
+{
+  "slug": "olive-cafe-london",
+  "title": "Olive Café",
+  "type": "concept",
+  "category": "Website",
+  "year": "2026",
+  "summary": "One sentence a client understands in 5 seconds: what it is and what makes it good.",
+  "client": "",
+  "image": "/og.jpg",
+  "imageAlt": "Olive Café homepage",
+  "featured": false,
+  "order": 10,
+  "role": ["Design", "Development"],
+  "stack": ["Next.js", "Tailwind CSS"],
+  "highlights": ["3D hero", "Online menu", "Table booking"],
+  "caseStudy": {
+    "overview": "What the project is and who it is for.",
+    "challenge": "The problem the business had (or, for a concept build, the problem businesses in this industry usually have).",
+    "solution": "What we built and the key decisions behind it.",
+    "features": ["Feature one", "Feature two", "Feature three"],
+    "results": [],
+    "status": "Live / Concept build / In development"
+  }
+}

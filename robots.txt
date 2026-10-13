@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /templates/
+Disallow: /scripts/
+Disallow: /data/
 
 # Google
 User-agent: Googlebot
