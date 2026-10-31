@@ -1,7 +1,8 @@
 [build]
   publish = "."
-  # Builds /work and /case-studies/* from Netlify + data/projects.manual.json
-  command = "node scripts/build-work.mjs"
+  # 1. Builds /work and /case-studies/* from Netlify + data/projects.manual.json
+  # 2. Builds /blog, /blog/* and /feed.xml from content/blog/*.md
+  command = "node scripts/build-work.mjs && node scripts/build-blog.mjs"
 
 [build.environment]
   NODE_VERSION = "20"

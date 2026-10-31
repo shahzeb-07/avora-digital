@@ -29,6 +29,8 @@ Script: `scripts/build-work.mjs`. Sirf wohi sites dikhti hain jin mein `portfoli
 
 ## Har portfolio site ke liye
 
+**Shortcut:** `templates/PORTFOLIO-PROMPT.md` ka prompt AI ko project ke saath dein. Wo neeche wale saare steps khud kar deta hai.
+
 1. `templates/portfolio.json` copy karein aur site ki root mein rakhein:
    - **HTML site:** `index.html` ke saath
    - **React (Vite / CRA) aur Next.js:** `public/portfolio.json`

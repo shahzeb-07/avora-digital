@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Avora Digital Blog</title>
+    <link>https://avoradigital.online/blog</link>
+    <atom:link href="https://avoradigital.online/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Practical guides on Shopify, custom websites, speed and conversion.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Selling abroad from Pakistan: 6 store mistakes that stop Gulf and UK buyers</title>
+      <link>https://avoradigital.online/blog/selling-abroad-from-pakistan</link>
+      <guid isPermaLink="true">https://avoradigital.online/blog/selling-abroad-from-pakistan</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Selling abroad</category>
+      <description>Overseas visitors often leave a Pakistani online store at the same six points. Here is what they are and how to fix each one, usually without building a new website.</description>
+    </item>
+    <item>
+      <title>Shopify or a custom website: which one does your brand need?</title>
+      <link>https://avoradigital.online/blog/shopify-or-custom-website</link>
+      <guid isPermaLink="true">https://avoradigital.online/blog/shopify-or-custom-website</guid>
+      <pubDate>Wed, 28 Oct 2026 09:00:00 GMT</pubDate>
+      <category>Shopify</category>
+      <description>A plain comparison of Shopify and a custom-built website for brands in Pakistan, the Gulf and the UK: cost, speed to launch, payments, control and when each one is the wrong choice.</description>
+    </item>
+  </channel>
+</rss>

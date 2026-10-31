@@ -477,23 +477,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const serviceMap = {
       shopify: "Shopify Development",
       "custom-web": "Custom Web Development",
-      facebook: "Facebook Marketing",
-      instagram: "Instagram Marketing",
-      "meta-ads": "Meta Ads Management",
-      "bottle-labels": "Logo & Bottle Labels",
-      tissue: "Tissue Packaging",
-      "complete-brand": "Complete Brand Build",
-      "social-media": "Social Media Management",
-      logo: "Logo Design",
-      printing: "Printing & Delivery",
+      growth: "Optimization & Care",
     };
 
     const packageMap = {
       "digital-launch":
-        "Digital Launch package (website, basic SEO, and analytics setup)",
-      "digital-growth":
-        "Digital Growth package (website optimization, social media, and Meta Ads)",
-      "complete-brand": "Complete Brand Build package",
+        "Digital Launch package (Shopify or custom website, SEO foundations, and analytics setup)",
+      "store-growth":
+        "Store Growth package (audit, speed, conversion fixes, and technical SEO)",
+      "ongoing-care":
+        "Ongoing Care package (monthly updates, fixes, and improvements)",
     };
 
     const tierMap = {
@@ -518,6 +511,26 @@ document.addEventListener("DOMContentLoaded", () => {
       message.value = `I'm interested in the ${selectedTier} tier for ${selectedService}. Please share the next steps and a tailored quote.`;
     }
 
+    if (params.get("intent") === "audit" && message && !message.value) {
+      message.value =
+        "I'd like the free Shopify store check.\n\nMy store URL: \nWhat I sell: \nMain problem I see: ";
+    }
+
+    if (params.get("intent") === "store" && message && !message.value) {
+      message.value =
+        "I saw your concept stores and want something like this for my brand.\n\nWhat I sell: \nWhere my customers are: \nShopify or custom build: ";
+    }
+
+    if (params.get("intent") === "speed" && message && !message.value) {
+      message.value =
+        "I'd like the free speed check for my store.\n\nMy store URL: \nWhat I sell: \nMain problem I see: ";
+    }
+
+    if (params.get("intent") === "abroad" && message && !message.value) {
+      message.value =
+        "I'd like the free export check for my store.\n\nMy store URL: \nCountries I want to sell to: \nWhat I sell: ";
+    }
+
     if (params.get("intent") === "portfolio" && message && !message.value) {
       message.value =
         "I'd like to see examples of your past work relevant to my project. Here's what I'm planning:\n\n";
@@ -526,9 +539,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (selectedPackage) {
       if (service && !selectedService) {
         service.value =
-          params.get("package") === "complete-brand"
-            ? "Complete Brand Build"
-            : "Other";
+          params.get("package") === "digital-launch"
+            ? "Other"
+            : "Optimization & Care";
       }
       if (message && !message.value) {
         message.value = `I'm interested in the ${selectedPackage}. Please share the next steps and a tailored quote.`;
@@ -781,7 +794,7 @@ document.addEventListener("DOMContentLoaded", () => {
      attributes in the HTML (see updatePrices below). There is no
      separate hardcoded table here anymore -- the old one silently
      overwrote whatever price the HTML actually had, and had no
-     entries at all for the Logo & Brand Identity tiers. Whatever
+     entries at all for some tiers. Whatever
      number is in the HTML is now what gets shown, in both
      currencies, automatically. */
 
