@@ -14,3 +14,43 @@
 /templates/*  /404.html  404
 /scripts/*    /404.html  404
 /data/*       /404.html  404
+/content/*    /404.html  404
+
+# Blog listing (blog.html sits next to the blog/ folder of posts)
+/blog         /blog.html   200
+
+# Social campaign short links (Shopify conversion leaks carousel, Oct 2026)
+/audit     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=carousel-slide  302
+/go/ig     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=instagram  302
+/go/fb     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=facebook  302
+/go/li     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=linkedin  302
+/go/tt     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=tiktok  302
+/go/x      /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=x  302
+/go/th     /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=threads  302
+/go/pin    /contact?service=shopify&intent=audit&utm_medium=social&utm_campaign=shopify-conversion-leaks&utm_content=carousel-01&utm_source=pinterest  302
+
+# Concept stores carousel (Oct 2026)
+/stores     /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=carousel-slide  302
+/s/ig      /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=instagram  302
+/s/fb      /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=facebook  302
+/s/li      /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=linkedin  302
+/s/tt      /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=tiktok  302
+/s/x       /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=x  302
+/s/th      /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=threads  302
+/s/pin     /contact?service=shopify&intent=store&utm_medium=social&utm_campaign=concept-stores&utm_content=carousel-02&utm_source=pinterest  302
+
+# Selling abroad carousel (Oct 2026)
+/abroad     /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=carousel-slide  302
+/a/ig      /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=instagram  302
+/a/fb      /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=facebook  302
+/a/li      /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=linkedin  302
+/a/tt      /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=tiktok  302
+/a/x       /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=x  302
+/a/th      /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=threads  302
+/a/pin     /contact?service=shopify&intent=abroad&utm_medium=social&utm_campaign=selling-abroad&utm_content=carousel-03&utm_source=pinterest  302
+
+# Shopify speed carousel (Oct 2026)
+/speed      /contact?service=growth&intent=speed&utm_medium=social&utm_campaign=shopify-speed&utm_content=carousel-05&utm_source=carousel-slide  302
+/sp/li     /contact?service=growth&intent=speed&utm_medium=social&utm_campaign=shopify-speed&utm_content=carousel-05&utm_source=linkedin  302
+/sp/ig     /contact?service=growth&intent=speed&utm_medium=social&utm_campaign=shopify-speed&utm_content=carousel-05&utm_source=instagram  302
+/sp/fb     /contact?service=growth&intent=speed&utm_medium=social&utm_campaign=shopify-speed&utm_content=carousel-05&utm_source=facebook  302
