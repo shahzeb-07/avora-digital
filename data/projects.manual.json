@@ -39,5 +39,48 @@
       ],
       "status": "All 20 calculators are live and free, and the blog publishes guides for Pakistani businesses. The finance dashboard is in pre-launch: plans from a free tier to $199 a month are published, and nothing can be purchased yet."
     }
+  },
+  {
+    "slug": "peony",
+    "title": "Peony",
+    "type": "concept",
+    "category": "E-commerce",
+    "year": "2026",
+    "summary": "A concept skincare store for the Pakistani market: 19 products across five ranges, a scroll-driven hero and a checkout built around cash on delivery.",
+    "liveUrl": "https://peony-skincare.netlify.app",
+    "image": "",
+    "imageAlt": "Peony skincare concept store",
+    "featured": false,
+    "order": 2,
+    "role": [
+      "Brand concept",
+      "Design",
+      "Development"
+    ],
+    "stack": [
+      "Next.js",
+      "Netlify"
+    ],
+    "highlights": [
+      "19 products",
+      "Scroll-driven hero",
+      "COD-first checkout",
+      "Prices in PKR"
+    ],
+    "caseStudy": {
+      "overview": "Peony is a concept build: a complete skincare store for a fictional Pakistani brand, designed and developed by Avora Digital to show how we would build a premium beauty store for this market. It is not a commissioned client project.",
+      "challenge": "Beauty shoppers in Pakistan judge a new brand on two things before they buy: does it feel premium enough to trust with their skin, and can they pay safely. Most local stores either look like a template or hide delivery, payment and exchange details until checkout.",
+      "solution": "We kept the range short and the store calm: a scroll-driven hero, a three-step ritual (cleanse, hydrate, renew) that tells shoppers where to start, and product cards that show size, price and texture at a glance. Trust details that Pakistani shoppers look for, such as cash on delivery, phone confirmation, delivery threshold and exchange policy, sit on every page instead of in the footer only.",
+      "features": [
+        "19 products across five ranges: skin, lips, eyes, body, and tools and sets",
+        "Scroll-driven hero that opens as the visitor scrolls",
+        "Product cards with size, price in PKR, badges and a texture view on hover",
+        "Quick add to bag from the shop page",
+        "A three-step ritual that guides first-time shoppers",
+        "Payment options built for Pakistan: cash on delivery, JazzCash, Easypaisa and bank transfer",
+        "Delivery, exchange and order confirmation details on every page, plus WhatsApp support"
+      ],
+      "status": "Live as a concept demo. The brand and products are fictional."
+    }
   }
 ]
