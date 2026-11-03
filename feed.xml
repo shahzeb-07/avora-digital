@@ -6,7 +6,15 @@
     <atom:link href="https://avoradigital.online/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical guides on Shopify, custom websites, speed and conversion.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 28 Oct 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 03 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>Why is my Shopify store slow? How to test it and what to fix first</title>
+      <link>https://avoradigital.online/blog/why-is-my-shopify-store-slow</link>
+      <guid isPermaLink="true">https://avoradigital.online/blog/why-is-my-shopify-store-slow</guid>
+      <pubDate>Tue, 03 Nov 2026 09:00:00 GMT</pubDate>
+      <category>Speed</category>
+      <description>How to check your Shopify store's speed with free tools, what LCP, INP and CLS mean, the six things that slow most stores down, and the order to fix them in.</description>
+    </item>
     <item>
       <title>Selling abroad from Pakistan: 6 store mistakes that stop Gulf and UK buyers</title>
       <link>https://avoradigital.online/blog/selling-abroad-from-pakistan</link>
