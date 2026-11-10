@@ -790,28 +790,44 @@ document.addEventListener("DOMContentLoaded", () => {
      No-op on pages without .price-value / .currency-btn.
   ========================================================= */
 
-  /* Prices are read directly from each element's data-usd / data-pkr
-     attributes in the HTML (see updatePrices below). There is no
-     separate hardcoded table here anymore -- the old one silently
-     overwrote whatever price the HTML actually had, and had no
-     entries at all for some tiers. Whatever
-     number is in the HTML is now what gets shown, in both
-     currencies, automatically. */
+  /* Prices are read directly from each element's data-usd, data-gbp,
+     data-eur, data-aed, data-sar and data-pkr attributes in the HTML.
+     USD is the base price; the others are set in the HTML so the
+     rounding stays under our control. */
 
   const currencySettings = {
-    USD: { symbol: "$", position: "before" },
-    PKR: { symbol: "₨", position: "before" },
+    USD: { symbol: "$", locale: "en-US" },
+    GBP: { symbol: "£", locale: "en-GB" },
+    EUR: { symbol: "€", locale: "en-IE" },
+    AED: { symbol: "AED\u00a0", locale: "en-US" },
+    SAR: { symbol: "SAR\u00a0", locale: "en-US" },
+    PKR: { symbol: "₨", locale: "en-PK" },
+  };
+
+  /* First visit: pick a currency from the visitor's time zone.
+     Anything unknown stays on USD. A saved choice always wins. */
+  const guessCurrency = () => {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (tz === "Europe/London" || tz === "Europe/Belfast") return "GBP";
+      if (tz === "Asia/Karachi") return "PKR";
+      if (tz === "Asia/Dubai") return "AED";
+      if (tz === "Asia/Riyadh") return "SAR";
+      const euro = ["Amsterdam", "Athens", "Berlin", "Bratislava", "Brussels", "Dublin", "Helsinki", "Lisbon", "Ljubljana", "Luxembourg", "Madrid", "Malta", "Monaco", "Paris", "Riga", "Rome", "Tallinn", "Vienna", "Vilnius", "Zagreb", "Andorra", "San_Marino", "Vatican", "Nicosia"];
+      if (tz.startsWith("Europe/") && euro.includes(tz.slice(7))) return "EUR";
+    } catch (e) {
+      /* ignore */
+    }
+    return "USD";
   };
 
   const currencyButtons = document.querySelectorAll(".currency-btn");
   const priceElements = document.querySelectorAll(".price-value");
   const currencySymbols = document.querySelectorAll(".currency-symbol");
 
-  let currentCurrency = "USD";
   const savedCurrency = store.get("avoraCurrency");
-  if (savedCurrency === "USD" || savedCurrency === "PKR") {
-    currentCurrency = savedCurrency;
-  }
+  let currentCurrency =
+    savedCurrency && currencySettings[savedCurrency] ? savedCurrency : guessCurrency();
 
   const formatPrice = (value, currency, rawString) => {
     // Preserve exact cents if the HTML actually specified them
@@ -820,23 +836,15 @@ document.addEventListener("DOMContentLoaded", () => {
       typeof rawString === "string" && rawString.includes(".");
     const digits = { minimumFractionDigits: hasCents ? 2 : 0, maximumFractionDigits: hasCents ? 2 : 0 };
 
-    if (currency === "USD") {
-      return Number(value).toLocaleString("en-US", digits);
-    }
-    if (currency === "PKR") {
-      return Number(value).toLocaleString("en-PK", digits);
-    }
-    return value;
+    const settings = currencySettings[currency];
+    return settings ? Number(value).toLocaleString(settings.locale, digits) : value;
   };
 
   const updatePrices = () => {
     const currency = currencySettings[currentCurrency];
 
     priceElements.forEach((priceElement) => {
-      const raw =
-        currentCurrency === "PKR"
-          ? priceElement.dataset.pkr
-          : priceElement.dataset.usd;
+      const raw = priceElement.dataset[currentCurrency.toLowerCase()];
 
       if (raw === undefined || raw === "") {
         if (priceElement.dataset.priceId) {
