@@ -883,6 +883,109 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updatePrices();
 
+  /* ---------------------------------------------------------
+     LIVE EXCHANGE RATES
+     USD prices are fixed. GBP, EUR, AED, SAR and PKR follow the
+     daily rate from ExchangeRate-API (free, no key, attribution
+     link on the pricing page). Rates are cached for 12 hours.
+     If the request fails, the rounded values already in the
+     HTML are used, so prices never disappear.
+  --------------------------------------------------------- */
+
+  const FX_URL = "https://open.er-api.com/v6/latest/USD";
+  const FX_CACHE_KEY = "avoraFxRates";
+  const FX_MAX_AGE = 12 * 60 * 60 * 1000;
+  const FX_CODES = ["GBP", "EUR", "AED", "SAR", "PKR"];
+
+  // Sanity ranges per 1 USD: anything outside is treated as bad data.
+  const FX_LIMITS = {
+    GBP: [0.4, 1.5],
+    EUR: [0.5, 1.5],
+    AED: [3.5, 3.8],
+    SAR: [3.6, 3.9],
+    PKR: [150, 600],
+  };
+
+  // Same rounding style as the HTML values.
+  const roundPrice = (value, code) => {
+    if (code === "GBP" || code === "EUR") return (Math.ceil(value) - 0.01).toFixed(2);
+    if (code === "AED" || code === "SAR") return String(Math.ceil((value + 1) / 10) * 10 - 1);
+    if (code === "PKR") return String(Math.round(value / 500) * 500 - 1);
+    return String(value);
+  };
+
+  const ratesAreValid = (rates) =>
+    rates &&
+    FX_CODES.every((code) => {
+      const rate = Number(rates[code]);
+      const [min, max] = FX_LIMITS[code];
+      return Number.isFinite(rate) && rate >= min && rate <= max;
+    });
+
+  const fxNote = document.querySelector("[data-fx-updated]");
+
+  const applyRates = (rates, updatedAt) => {
+    if (!ratesAreValid(rates)) return;
+
+    priceElements.forEach((priceElement) => {
+      const usd = Number(priceElement.dataset.usd);
+      if (!Number.isFinite(usd)) return;
+      FX_CODES.forEach((code) => {
+        priceElement.dataset[code.toLowerCase()] = roundPrice(usd * Number(rates[code]), code);
+      });
+    });
+
+    if (fxNote && updatedAt) {
+      const date = new Date(updatedAt);
+      if (!Number.isNaN(date.getTime())) {
+        fxNote.textContent = date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+      }
+    }
+
+    updatePrices();
+  };
+
+  const loadRates = async () => {
+    if (!priceElements.length) return;
+
+    let cached = null;
+    try {
+      cached = JSON.parse(store.get(FX_CACHE_KEY) || "null");
+    } catch (e) {
+      cached = null;
+    }
+
+    if (cached && Date.now() - cached.savedAt < FX_MAX_AGE && ratesAreValid(cached.rates)) {
+      applyRates(cached.rates, cached.updatedAt);
+      return;
+    }
+
+    if (!window.fetch) return;
+    const controller = window.AbortController ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), 5000) : null;
+
+    try {
+      const response = await fetch(FX_URL, controller ? { signal: controller.signal } : {});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data.result !== "success" || !ratesAreValid(data.rates)) throw new Error("Bad rate data");
+
+      const updatedAt = (data.time_last_update_unix || 0) * 1000 || Date.now();
+      const rates = {};
+      FX_CODES.forEach((code) => { rates[code] = Number(data.rates[code]); });
+
+      store.set(FX_CACHE_KEY, JSON.stringify({ rates, updatedAt, savedAt: Date.now() }));
+      applyRates(rates, updatedAt);
+    } catch (e) {
+      // Keep the fallback prices from the HTML; still use an old cache if we have one.
+      if (cached && ratesAreValid(cached.rates)) applyRates(cached.rates, cached.updatedAt);
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  };
+
+  loadRates();
+
   /* =========================================================
      COOKIE CONSENT
   ========================================================= */

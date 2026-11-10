@@ -260,6 +260,7 @@
     
     <style>
         .currency-note { text-align: center; margin-top: 14px; font-size: 0.85rem; color: #8B929A; }
+        .currency-note a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
         .site-footer .footer-social { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
         .site-footer .footer-social a {
@@ -393,7 +394,7 @@
           "name": "Can I pay in my own currency?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Prices are set in USD. GBP, EUR, AED, SAR and PKR prices are converted at approximate rates and rounded. Your quote states the final amount and the currency you will be invoiced in."
+            "text": "Prices are set in USD. GBP, EUR, AED, SAR and PKR prices follow the daily exchange rate and are rounded. Your quote states the final amount and the currency you will be invoiced in."
           }
         },
         {
@@ -670,7 +671,7 @@
                                 aria-label="Choose currency"
                             ><button type="button" class="currency-btn active" data-currency="USD"><span>$</span> USD</button><button type="button" class="currency-btn" data-currency="GBP"><span>£</span> GBP</button><button type="button" class="currency-btn" data-currency="EUR"><span>€</span> EUR</button><button type="button" class="currency-btn" data-currency="AED"><span>د.إ</span> AED</button><button type="button" class="currency-btn" data-currency="SAR"><span>ر.س</span> SAR</button><button type="button" class="currency-btn" data-currency="PKR"><span>₨</span> PKR</button></div>
                         </div>
-                        <p class="currency-note">Prices are set in USD. Other currencies are converted at approximate rates (November 2026) and rounded. Your quote states the final amount and currency.</p>
+                        <p class="currency-note">Prices are set in USD. Other currencies follow the exchange rate of <span data-fx-updated>10 November 2026</span> and are rounded. Your quote states the final amount and currency. <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer">Rates By Exchange Rate API</a></p>
                     </div>
                 </section>
                 <hr>
@@ -919,7 +920,7 @@
                     <div class="faq-item reveal">
                         <button type="button" aria-expanded="false"><span>Can I pay in my own currency?</span><b>+</b></button>
                         <div>
-                            <p>Prices are set in USD. GBP, EUR, AED, SAR and PKR prices are converted at approximate rates and rounded. Your quote states the final amount and the currency you will be invoiced in.</p>
+                            <p>Prices are set in USD. GBP, EUR, AED, SAR and PKR prices follow the daily exchange rate and are rounded. Your quote states the final amount and the currency you will be invoiced in.</p>
                         </div>
                     </div>
                     <div class="faq-item reveal">
