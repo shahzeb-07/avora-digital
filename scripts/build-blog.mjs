@@ -343,7 +343,7 @@ ${posts.map((p) => postCard(p, "/")).join("\n")}
         <h1 class="reveal">Notes on stores <span>that sell.</span></h1>
         <p class="work-hero-lead reveal">
           Practical guides on Shopify, custom websites, speed and conversion, written for
-          brands selling in Pakistan, the Gulf and the UK.
+          online brands in the UK, US, Europe and beyond.
         </p>
         ${filters}
       </div>
@@ -379,7 +379,7 @@ ${posts.map((p) => postCard(p, "/")).join("\n")}
     base: "/",
     title: "Blog: Shopify, Custom Websites & Conversion | Avora Digital",
     description:
-      "Practical guides on Shopify, custom websites, speed and conversion for brands selling in Pakistan, the Gulf and the UK.",
+      "Practical guides on Shopify, custom websites, speed and conversion for online brands in the UK, US, Europe and beyond.",
     canonical: `${SITE}/blog`,
     ogImage: DEFAULT_IMAGE,
     head: `${rssLink("/")}\n${jsonLd(ld)}`,
