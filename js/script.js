@@ -790,28 +790,44 @@ document.addEventListener("DOMContentLoaded", () => {
      No-op on pages without .price-value / .currency-btn.
   ========================================================= */
 
-  /* Prices are read directly from each element's data-usd / data-pkr
-     attributes in the HTML (see updatePrices below). There is no
-     separate hardcoded table here anymore -- the old one silently
-     overwrote whatever price the HTML actually had, and had no
-     entries at all for some tiers. Whatever
-     number is in the HTML is now what gets shown, in both
-     currencies, automatically. */
+  /* Prices are read directly from each element's data-usd, data-gbp,
+     data-eur, data-aed, data-sar and data-pkr attributes in the HTML.
+     USD is the base price; the others are set in the HTML so the
+     rounding stays under our control. */
 
   const currencySettings = {
-    USD: { symbol: "$", position: "before" },
-    PKR: { symbol: "₨", position: "before" },
+    USD: { symbol: "$", locale: "en-US" },
+    GBP: { symbol: "£", locale: "en-GB" },
+    EUR: { symbol: "€", locale: "en-IE" },
+    AED: { symbol: "AED\u00a0", locale: "en-US" },
+    SAR: { symbol: "SAR\u00a0", locale: "en-US" },
+    PKR: { symbol: "₨", locale: "en-PK" },
+  };
+
+  /* First visit: pick a currency from the visitor's time zone.
+     Anything unknown stays on USD. A saved choice always wins. */
+  const guessCurrency = () => {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (tz === "Europe/London" || tz === "Europe/Belfast") return "GBP";
+      if (tz === "Asia/Karachi") return "PKR";
+      if (tz === "Asia/Dubai") return "AED";
+      if (tz === "Asia/Riyadh") return "SAR";
+      const euro = ["Amsterdam", "Athens", "Berlin", "Bratislava", "Brussels", "Dublin", "Helsinki", "Lisbon", "Ljubljana", "Luxembourg", "Madrid", "Malta", "Monaco", "Paris", "Riga", "Rome", "Tallinn", "Vienna", "Vilnius", "Zagreb", "Andorra", "San_Marino", "Vatican", "Nicosia"];
+      if (tz.startsWith("Europe/") && euro.includes(tz.slice(7))) return "EUR";
+    } catch (e) {
+      /* ignore */
+    }
+    return "USD";
   };
 
   const currencyButtons = document.querySelectorAll(".currency-btn");
   const priceElements = document.querySelectorAll(".price-value");
   const currencySymbols = document.querySelectorAll(".currency-symbol");
 
-  let currentCurrency = "USD";
   const savedCurrency = store.get("avoraCurrency");
-  if (savedCurrency === "USD" || savedCurrency === "PKR") {
-    currentCurrency = savedCurrency;
-  }
+  let currentCurrency =
+    savedCurrency && currencySettings[savedCurrency] ? savedCurrency : guessCurrency();
 
   const formatPrice = (value, currency, rawString) => {
     // Preserve exact cents if the HTML actually specified them
@@ -820,23 +836,15 @@ document.addEventListener("DOMContentLoaded", () => {
       typeof rawString === "string" && rawString.includes(".");
     const digits = { minimumFractionDigits: hasCents ? 2 : 0, maximumFractionDigits: hasCents ? 2 : 0 };
 
-    if (currency === "USD") {
-      return Number(value).toLocaleString("en-US", digits);
-    }
-    if (currency === "PKR") {
-      return Number(value).toLocaleString("en-PK", digits);
-    }
-    return value;
+    const settings = currencySettings[currency];
+    return settings ? Number(value).toLocaleString(settings.locale, digits) : value;
   };
 
   const updatePrices = () => {
     const currency = currencySettings[currentCurrency];
 
     priceElements.forEach((priceElement) => {
-      const raw =
-        currentCurrency === "PKR"
-          ? priceElement.dataset.pkr
-          : priceElement.dataset.usd;
+      const raw = priceElement.dataset[currentCurrency.toLowerCase()];
 
       if (raw === undefined || raw === "") {
         if (priceElement.dataset.priceId) {
@@ -874,6 +882,109 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   updatePrices();
+
+  /* ---------------------------------------------------------
+     LIVE EXCHANGE RATES
+     USD prices are fixed. GBP, EUR, AED, SAR and PKR follow the
+     daily rate from ExchangeRate-API (free, no key, attribution
+     link on the pricing page). Rates are cached for 12 hours.
+     If the request fails, the rounded values already in the
+     HTML are used, so prices never disappear.
+  --------------------------------------------------------- */
+
+  const FX_URL = "https://open.er-api.com/v6/latest/USD";
+  const FX_CACHE_KEY = "avoraFxRates";
+  const FX_MAX_AGE = 12 * 60 * 60 * 1000;
+  const FX_CODES = ["GBP", "EUR", "AED", "SAR", "PKR"];
+
+  // Sanity ranges per 1 USD: anything outside is treated as bad data.
+  const FX_LIMITS = {
+    GBP: [0.4, 1.5],
+    EUR: [0.5, 1.5],
+    AED: [3.5, 3.8],
+    SAR: [3.6, 3.9],
+    PKR: [150, 600],
+  };
+
+  // Same rounding style as the HTML values.
+  const roundPrice = (value, code) => {
+    if (code === "GBP" || code === "EUR") return (Math.ceil(value) - 0.01).toFixed(2);
+    if (code === "AED" || code === "SAR") return String(Math.ceil((value + 1) / 10) * 10 - 1);
+    if (code === "PKR") return String(Math.round(value / 500) * 500 - 1);
+    return String(value);
+  };
+
+  const ratesAreValid = (rates) =>
+    rates &&
+    FX_CODES.every((code) => {
+      const rate = Number(rates[code]);
+      const [min, max] = FX_LIMITS[code];
+      return Number.isFinite(rate) && rate >= min && rate <= max;
+    });
+
+  const fxNote = document.querySelector("[data-fx-updated]");
+
+  const applyRates = (rates, updatedAt) => {
+    if (!ratesAreValid(rates)) return;
+
+    priceElements.forEach((priceElement) => {
+      const usd = Number(priceElement.dataset.usd);
+      if (!Number.isFinite(usd)) return;
+      FX_CODES.forEach((code) => {
+        priceElement.dataset[code.toLowerCase()] = roundPrice(usd * Number(rates[code]), code);
+      });
+    });
+
+    if (fxNote && updatedAt) {
+      const date = new Date(updatedAt);
+      if (!Number.isNaN(date.getTime())) {
+        fxNote.textContent = date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+      }
+    }
+
+    updatePrices();
+  };
+
+  const loadRates = async () => {
+    if (!priceElements.length) return;
+
+    let cached = null;
+    try {
+      cached = JSON.parse(store.get(FX_CACHE_KEY) || "null");
+    } catch (e) {
+      cached = null;
+    }
+
+    if (cached && Date.now() - cached.savedAt < FX_MAX_AGE && ratesAreValid(cached.rates)) {
+      applyRates(cached.rates, cached.updatedAt);
+      return;
+    }
+
+    if (!window.fetch) return;
+    const controller = window.AbortController ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), 5000) : null;
+
+    try {
+      const response = await fetch(FX_URL, controller ? { signal: controller.signal } : {});
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      if (data.result !== "success" || !ratesAreValid(data.rates)) throw new Error("Bad rate data");
+
+      const updatedAt = (data.time_last_update_unix || 0) * 1000 || Date.now();
+      const rates = {};
+      FX_CODES.forEach((code) => { rates[code] = Number(data.rates[code]); });
+
+      store.set(FX_CACHE_KEY, JSON.stringify({ rates, updatedAt, savedAt: Date.now() }));
+      applyRates(rates, updatedAt);
+    } catch (e) {
+      // Keep the fallback prices from the HTML; still use an old cache if we have one.
+      if (cached && ratesAreValid(cached.rates)) applyRates(cached.rates, cached.updatedAt);
+    } finally {
+      if (timer) clearTimeout(timer);
+    }
+  };
+
+  loadRates();
 
   /* =========================================================
      COOKIE CONSENT

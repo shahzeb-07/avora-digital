@@ -7171,3 +7171,16 @@ body.menu-open .site-header { z-index: 100000; }
   .post-cta { padding: 24px 20px; }
   .post-cta .btn { width: 100%; justify-content: center; }
 }
+
+
+/* Pricing: six-currency switcher */
+.currency-toggle { flex-wrap: wrap; justify-content: center; }
+.currency-btn { min-width: 74px; padding: 0 12px; }
+@media (max-width: 640px) {
+  .currency-toggle {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-radius: 22px;
+  }
+  .currency-btn { min-width: 0; padding: 0 6px; }
+}
