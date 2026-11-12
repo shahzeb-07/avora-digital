@@ -562,7 +562,7 @@ async function updateHomepage(posts) {
           <div>
 
             <div class="section-index">
-              09 / FROM THE BLOG
+              10 / FROM THE BLOG
             </div>
 
             <h2>

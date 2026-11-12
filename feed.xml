@@ -6,7 +6,15 @@
     <atom:link href="https://avoradigital.online/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical guides on Shopify, custom websites, speed and conversion.</description>
     <language>en</language>
-    <lastBuildDate>Tue, 10 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>How we built a multi-currency profit dashboard for online stores</title>
+      <link>https://avoradigital.online/blog/multi-currency-profit-dashboard</link>
+      <guid isPermaLink="true">https://avoradigital.online/blog/multi-currency-profit-dashboard</guid>
+      <pubDate>Thu, 12 Nov 2026 09:00:00 GMT</pubDate>
+      <category>Dashboards &amp; SaaS</category>
+      <description>The problem, the technical decisions and the lessons behind Fiscora, the finance dashboard we designed and built in-house: data import, 41 currencies and tax, privacy, the Cloudflare stack and testing.</description>
+    </item>
     <item>
       <title>The European Accessibility Act and your online store: what to check now</title>
       <link>https://avoradigital.online/blog/european-accessibility-act-online-stores</link>

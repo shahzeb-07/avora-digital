@@ -478,6 +478,7 @@ document.addEventListener("DOMContentLoaded", () => {
       shopify: "Shopify Development",
       "custom-web": "Custom Web Development",
       growth: "Optimization & Care",
+      saas: "Custom Dashboard / SaaS",
     };
 
     const packageMap = {

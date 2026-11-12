@@ -3,10 +3,10 @@
     "slug": "fiscora",
     "title": "Fiscora",
     "type": "in-house",
-    "category": "Web App",
+    "category": "SaaS",
     "year": "2026",
-    "summary": "Free financial calculators for small businesses: 20 tools in 10 languages, with live gold and silver prices and a finance dashboard on the way.",
-    "liveUrl": "https://getfiscora.com",
+    "summary": "Finance website and dashboard for small businesses. Avora Digital's own product: designed, built and run in-house.",
+    "liveUrl": "https://getfiscora.com/?utm_source=avoradigital&utm_medium=referral&utm_campaign=case_study",
     "image": "https://getfiscora.com/og.png",
     "imageAlt": "Fiscora homepage preview",
     "featured": true,
@@ -14,30 +14,37 @@
     "role": [
       "Product design",
       "Development",
-      "Multilingual SEO"
+      "Multilingual SEO",
+      "Testing"
     ],
-    "stack": [],
+    "stack": [
+      "Next.js",
+      "Cloudflare Pages",
+      "Cloudflare Workers",
+      "Cloudflare D1",
+      "Paddle"
+    ],
     "highlights": [
-      "20 calculators",
+      "Finance dashboard",
+      "20 free calculators",
       "10 languages",
-      "Urdu & Arabic RTL",
-      "Live gold & silver prices"
+      "41 currencies"
     ],
     "caseStudy": {
-      "overview": "Fiscora is our own product: a free set of financial calculators for small businesses, with a finance dashboard in pre-launch. Avora Digital designed, built and runs it, and we use it to test the same performance, multilingual and SEO practices we apply to client work.",
-      "challenge": "Small business owners juggle margins, VAT, cash flow, zakat and gold prices across generic tools. Most of those tools are English-only and ignore local details: tola and karat for gold, silver or gold nisab for zakat, PKR and Gulf VAT, or the returns and courier costs that decide whether a cash-on-delivery store is actually profitable.",
-      "solution": "We built 20 focused calculators that each do one job well, explain their formula in plain language, show a worked example and answer the common questions on the same page. The whole site is available in 10 languages, each on its own URL with hreflang, so every language version can be found in search. A blog adds practical guides for Pakistani businesses, such as COD pricing, zakat on gold and FBR salary tax.",
+      "overview": "Fiscora is a finance website and dashboard for small businesses. It is Avora Digital's own product: designed, built and run in-house, and live at getfiscora.com.",
+      "challenge": "Small business owners see their sales, not their real profit. Courier charges, returns, payment fees, ads and tax eat the margin, and nobody adds them up.",
+      "solution": "We built two layers. Free calculators answer one question each, in the visitor's language. The finance dashboard brings sales and costs together, so owners can see profit and loss, cash flow and profit by product, channel, city and courier, with alerts when something changes and planning tools to look ahead.",
       "features": [
-        "20 calculators: budget, profit margin, discount, commission, ROI, loan, break-even, VAT/GST, currency, salary, Pakistan salary tax, age, investment, cash flow, expense tracker, invoice, pricing, zakat, gold and e-commerce profit and loss",
-        "Every calculator explains its formula, includes a worked example and an FAQ",
-        "10 languages: English, Urdu and Arabic (right-to-left), Roman Urdu, Spanish, French, Portuguese, Hindi, German and Simplified Chinese, each with its own URL and hreflang tags",
-        "Live gold and silver prices that refresh every minute, with a manual override; currency conversion uses central bank reference rates, and users can type their own rate",
-        "Pakistan salary tax calculator using FBR slabs for tax years 2026-27 and 2025-26",
-        "Local detail: tola and karat for gold, silver or gold nisab for zakat, returns and courier costs for e-commerce",
-        "Privacy-first: figures typed into a calculator stay in the browser, and analytics only load after cookie consent",
-        "No account needed to use any calculator"
+        "20 free financial calculators in 10 languages, including Urdu and Arabic (right to left)",
+        "A finance dashboard: profit and loss, cash flow, expense analysis, receivables, profit by product, channel, city and courier, and alerts",
+        "Planning tools: a 3-scenario profit forecast, a 13-week cash forecast and budgets",
+        "Import from Shopify or any CSV file, an Orders API for custom websites, Excel export and a live Google Sheets link",
+        "41 currencies with VAT, GST or sales tax; up to 3 businesses and a team of 3 per business",
+        "Privacy by design: Google sign-in, no customer contact details stored, and data deleted only when the user deletes it",
+        "Built with Next.js, Cloudflare Pages and Workers, and Cloudflare D1; payments through Paddle as merchant of record",
+        "Quality: 177 automated calculator tests, automated end-to-end tests of the dashboard, and every page checked in all 10 languages on phone and desktop"
       ],
-      "status": "All 20 calculators are live and free, and the blog publishes guides for Pakistani businesses. The finance dashboard is in pre-launch: plans from a free tier to $199 a month are published, and nothing can be purchased yet."
+      "status": "Live at getfiscora.com. Payments through Paddle as merchant of record: checkout is being set up."
     }
   },
   {
