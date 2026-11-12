@@ -31,7 +31,7 @@ const API = process.env.NETLIFY_API_URL || "https://api.netlify.com/api/v1"; // 
 
 const TYPE_LABEL = {
   client: "Client project",
-  "in-house": "In-house product",
+  "in-house": "Our own product",
   concept: "Concept build",
 };
 
@@ -436,7 +436,7 @@ function caseStudyPage(p, next, layout) {
         "@id": `${url}#project`,
         name: p.title,
         description: p.summary,
-        ...(p.liveUrl ? { url: p.liveUrl } : {}),
+        ...(p.liveUrl ? { url: p.liveUrl.split("?")[0] } : {}),
         ...(p.image ? { image: p.image } : {}),
         ...(p.year ? { dateCreated: p.year } : {}),
         genre: p.category,
