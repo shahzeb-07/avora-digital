@@ -6,7 +6,15 @@
     <atom:link href="https://avoradigital.online/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Practical guides on Shopify, custom websites, speed and conversion.</description>
     <language>en</language>
-    <lastBuildDate>Thu, 12 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 09:00:00 GMT</lastBuildDate>
+    <item>
+      <title>10 questions to ask before you hire a web or Shopify agency</title>
+      <link>https://avoradigital.online/blog/questions-to-ask-before-hiring-a-web-agency</link>
+      <guid isPermaLink="true">https://avoradigital.online/blog/questions-to-ask-before-hiring-a-web-agency</guid>
+      <pubDate>Tue, 24 Nov 2026 09:00:00 GMT</pubDate>
+      <category>Hiring an agency</category>
+      <description>Before you sign with a web or Shopify agency, ask these 10 questions about ownership, cost, scope, speed, support and who actually does the work, and learn which answers should worry you.</description>
+    </item>
     <item>
       <title>How we built a multi-currency profit dashboard for online stores</title>
       <link>https://avoradigital.online/blog/multi-currency-profit-dashboard</link>
